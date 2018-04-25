@@ -36,8 +36,8 @@ func VersionInterfaces(schema.GroupVersion) (*meta.VersionInterfaces, error) {
 }
 
 // NewDiscoveryRESTMapper returns a RESTMapper based on discovery information.
-func NewDiscoveryRESTMapper(resources []*metav1.APIResourceList, versionFunc meta.VersionInterfacesFunc) (*meta.DefaultRESTMapper, error) {
-	rm := meta.NewDefaultRESTMapper(nil, versionFunc)
+func NewDiscoveryRESTMapper(resources []*metav1.APIResourceList) (*meta.DefaultRESTMapper, error) {
+	rm := meta.NewDefaultRESTMapper(nil)
 	for _, resourceList := range resources {
 		gv, err := schema.ParseGroupVersion(resourceList.GroupVersion)
 		if err != nil {
